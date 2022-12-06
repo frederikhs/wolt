@@ -47,8 +47,10 @@ func (fo *FullOrder) ToSimpleOrder() SimpleOrder {
 		dCoordX = 0
 		dCoordY = 0
 	} else {
-		dCoordX = fo.DeliveryLocation.Coordinates.Coordinates[0]
-		dCoordY = fo.DeliveryLocation.Coordinates.Coordinates[1]
+		if len(fo.DeliveryLocation.Coordinates.Coordinates) == 2 {
+			dCoordX = fo.DeliveryLocation.Coordinates.Coordinates[0]
+			dCoordY = fo.DeliveryLocation.Coordinates.Coordinates[1]
+		}
 	}
 
 	return SimpleOrder{
